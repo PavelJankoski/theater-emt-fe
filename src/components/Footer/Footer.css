@@ -1,0 +1,21 @@
+.socialMedia{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.socialMedia a {color: rgb(82,105,113);
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.socialMedia a:hover{
+    color: rgb(40,68,79);
+}
+footer{
+    background-color: #f8f9fa!important;
+    border-top: 4px solid rgb(40,68,79);
+}
+
+.container-md {
+    padding: 0 !important;
+}

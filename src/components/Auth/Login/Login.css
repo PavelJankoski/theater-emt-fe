@@ -1,0 +1,17 @@
+.loginForm {
+    padding: 15% 0 15% 0;
+    margin: auto;
+    width: 500px;
+}
+
+
+.authButton {
+    font-size: 1.3em;
+    border:none !important;
+    background-color: rgb(40,68,79);
+}
+.authButton:hover, .authButton:focus, .authButton:active{
+    outline: none !important;
+    box-shadow: none !important;
+    background-color: rgb(82,105,113);
+}

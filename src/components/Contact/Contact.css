@@ -1,0 +1,9 @@
+.socIc{
+    color: rgb(82, 105, 113);
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+}
+.socIc:hover{
+    color: rgb(40, 68, 79);
+
+}

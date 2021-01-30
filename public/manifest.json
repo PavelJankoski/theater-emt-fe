@@ -1,0 +1,11 @@
+{
+  "short_name": "Theater",
+  "name": "Theater multiservice application",
+  "icons": [
+    {
+      "src": "logo-without-text.jpg",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "."
+}
