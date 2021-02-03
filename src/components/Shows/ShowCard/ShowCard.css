@@ -1,0 +1,145 @@
+.containerC {
+    width: 370px;
+    height: 260px;
+    padding: 0;
+    margin: auto;
+    margin-bottom: 25px;
+    background-size: cover;
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 5px #000;
+    box-shadow: 0 0 5px #000;
+    grid-column: span 1;
+
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 2fr 2fr 1fr;
+    background: rgba(77, 77, 77, .9);
+    color: #fef5df;
+    opacity: 0;
+    transition: all 0.5s;
+    cursor:default;
+}
+
+.containerC:hover .overlay {
+    opacity: 1;
+}
+.containerC:hover .overlay .head {
+    transform: translateY(0px);
+}
+.containerC:hover .overlay hr {
+    width: 320px;
+    transition-delay: 0.4s;
+}
+.containerC:hover .overlay .descriptionC {
+    transform: translateY(0px);
+    transition-delay: 0.3s;
+    opacity: 1;
+}
+.containerC:hover .overlay .cardFooter {
+    transform: translateY(0px);
+    transition-delay: 0.6s;
+    opacity: 1;
+}
+
+
+
+.items {
+    padding-left: 20px;
+
+
+}
+
+.head {
+
+    font-size: 25px;
+    font-weight: bold;
+    transform: translateY(40px);
+    transition: all 0.7s;
+
+}
+.head p{
+    width:320px;
+    line-height: 28px;
+    position: relative;
+    bottom: 18px;
+}
+.head hr {
+    display: block;
+    width: 0;
+    border: none;
+    border-bottom: solid 2px #fef5df;
+    position: absolute;
+    bottom: 14px;
+    left: 20px;
+    transition: all 0.5s;
+}
+.descriptionC {
+    font-size: 1em;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s;
+    width:360px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+    bottom: 15px;
+}
+
+.descriptionC::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+.descriptionC::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 10px;
+
+}
+
+/* Handle */
+.descriptionC::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.descriptionC::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.cardFooter {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s;
+}
+
+.btn-primary{
+    background-color: rgb(82,105,113) !important;
+    border: none !important;
+    font-size: 1.1em;
+}
+.btn-primary:hover{
+    background-color: rgb(40,68,79)!important;
+    /*font-weight: bold;*/
+
+
+}
+.btn:focus, .btn:active{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.delete{
+    background-color: rgb(138,78,97) !important;
+    color: white !important;
+}
+.delete:hover{
+    background-color: rgb(113,11,48) !important;
+    color: white;
+}

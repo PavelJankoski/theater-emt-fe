@@ -10,6 +10,7 @@ body {
 .fullWidth {
   height: 80vh;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .mainTitle{
@@ -17,4 +18,27 @@ body {
   font-weight:bolder;
   color:rgb(40,68,79);
   text-transform: uppercase;
+}
+
+.fullWidth::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Track */
+.fullWidth::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+
+}
+
+/* Handle */
+.fullWidth::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.fullWidth::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }

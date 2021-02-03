@@ -1,0 +1,22 @@
+#cover{
+    position: relative;
+    margin:auto;
+    background-color: rgb(40,68,79);
+    border-radius: 30px;
+    transform: scale(0.6);
+}
+
+@media (min-width: 1150px) {
+    .cards { grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+.cards{
+    display: grid;
+    grid-gap: 1rem;
+    border-radius: 1.50rem;
+    justify-items: center;
+    padding: 5%;
+}

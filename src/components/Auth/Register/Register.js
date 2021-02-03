@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {Alert, Button, Form} from "react-bootstrap";
 import {Link, withRouter} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faThumbsUp, faThumbsDown} from "@fortawesome/free-solid-svg-icons";
 import {API_DRIVER} from "../../../config";
 import './Register.css';
 import ClipLoader from "react-spinners/ClipLoader";
+import Response from "../../Response/Response";
 
 
 const Register = () => {
@@ -28,19 +28,19 @@ const Register = () => {
     }, []);
 
     let result = (
-        <div className="text-center mt-5">
-            <FontAwesomeIcon className="mb-4" icon={faThumbsUp} size="10x" color="rgb(40,68,79)"/>
-            <h2 className="text-secondary">You are Successfully Registered! <Link to="/login">Log in</Link></h2>
-        </div>
+        <Response icon={faThumbsUp}
+                  text={"You are Successfully Registered!"}
+                  link={"/login"}
+                  buttonText={"Log in"}/>
     );
 
     if (fail) {
         result = (
-            <div className="text-center mt-5">
-                <FontAwesomeIcon className="mb-4" icon={faThumbsDown} size="10x" color="rgb(40,68,79)"/>
-                <h2 className="text-secondary">Sorry, we couldn't register you. Please try again later</h2><Link to="/">Back
-                to home</Link>
-            </div>
+            <Response icon={faThumbsDown}
+                      text={"Sorry, we couldn't register you. Please try again later"}
+                      link={"/"}
+                      buttonText={"Back to Home"}/>
+
         );
     }
 

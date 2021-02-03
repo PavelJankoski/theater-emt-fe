@@ -4,3 +4,7 @@ export {
     setLoginError,
     logout
 } from './authActions';
+
+export {
+    fetchShows
+} from './showActions';

@@ -5,14 +5,20 @@ import {connect} from "react-redux";
 import * as actions from '../../store/actions/index';
 import Navbar from "../../components/UI/Navbar/Navbar";
 import Login from "../../components/Auth/Login/Login";
-import Footer from "../../components/Footer/Footer";
+import Footer from "../../components/UI/Footer/Footer";
 import Register from "../../components/Auth/Register/Register";
 import Contact from "../../components/Contact/Contact";
+import ShowCarousel from "../../components/UI/Carousel/ShowCarousel";
+import Response from "../../components/Response/Response";
+import {faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
+import ShowList from "../../components/Shows/ShowsList";
+import ScheduleList from "../../components/Schedule/ScheduleList";
 
 function App(props) {
     useEffect(() => {
         props.onTryAutoSignIn();
     }, []);
+
     let routes = (
         <Switch>
 
@@ -22,29 +28,74 @@ function App(props) {
             <Route exact path="/register">
                 <Register/>
             </Route>
+            <Route exact path="/">
+                <ShowCarousel/>
+            </Route>
+            <Route exact path="/shows">
+                <ShowList/>
+            </Route>
+            <Route exact path="/schedule">
+                <ScheduleList/>
+            </Route>
             <Route exact path="/contact">
                 <Contact/>
             </Route>
-            <Redirect to="/contact"/>
+            <Route exact path="/not-found">
+                <div className="container-md bg-white fullWidth overflow-hidden">
+                    <Response icon={faExclamationCircle}
+                              text={"Error 404: Page not found!"}
+                              link={"/"}
+                              buttonText={"Back to Home"}/>
+                </div>
+            </Route>
+           {/* <Redirect to="/not-found"/>*/}
+            <Redirect to="/"/>
         </Switch>
     );
     if (props.isAuthenticated) {
         if (props.role === "ROLE_ADMIN") {
             routes = (
                 <Switch>
+                    <Route exact path="/">
+                        <ShowCarousel/>
+                    </Route>
+                    <Route exact path="/shows">
+                        <ShowList/>
+                    </Route>
+                    <Route exact path="/schedule">
+                        <ScheduleList/>
+                    </Route>
                     <Route exact path="/contact">
                         <Contact/>
                     </Route>
-                    <Redirect to="/contact"/>
+                    <Route exact path="/not-found">
+                        <div className="container-md bg-white fullWidth overflow-hidden">
+                            <Response icon={faExclamationCircle}
+                                      text={"Error 404: Page not found!"}
+                                      link={"/"}
+                                      buttonText={"Back to Home"}/>
+                        </div>
+                    </Route>
+                    {/*<Redirect to="/not-found"/>*/}
+                    <Redirect to="/"/>
                 </Switch>
             );
         } else {
             routes = (
                 <Switch>
+                    <Route exact path="/">
+                        <ShowCarousel/>
+                    </Route>
+                    <Route exact path="/shows">
+                        <ShowList/>
+                    </Route>
+                    <Route exact path="/schedule">
+                        <ScheduleList/>
+                    </Route>
                     <Route exact path="/contact">
                         <Contact/>
                     </Route>
-                    <Redirect to="/contact"/>
+                    <Redirect to="/"/>
                 </Switch>
             );
         }
@@ -72,7 +123,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onTryAutoSignIn: () => dispatch(actions.authCheckState()),
-        // logoutUser: () => dispatch(actions.logout())
+        fetchShows: () => dispatch(actions.fetchShows(""))
     };
 };
 

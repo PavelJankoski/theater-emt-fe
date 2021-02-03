@@ -9,11 +9,13 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import App from './containers/App/App';
 import reportWebVitals from './reportWebVitals';
 import authReducer from "./store/reducers/authReducer";
+import showReducer from "./store/reducers/showReducer";
 
 const composeEnhancers = (process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null) || compose;
 
 const rootReducer = combineReducers({
-    authReducer: authReducer
+    authReducer: authReducer,
+    showReducer: showReducer
 })
 
 export const store = createStore(rootReducer, composeEnhancers(
@@ -23,9 +25,7 @@ export const store = createStore(rootReducer, composeEnhancers(
 const app = (
     <Provider store={store}>
         <BrowserRouter>
-            <React.StrictMode>
-                <App />
-            </React.StrictMode>
+            <App />
         </BrowserRouter>
     </Provider>
 );

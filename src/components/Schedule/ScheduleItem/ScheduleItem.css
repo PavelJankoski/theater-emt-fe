@@ -1,0 +1,27 @@
+#ticketsContainer {
+    background-color: rgb(254,242,236);
+    border-width: 1px 1px 5px 1px;
+    border-color: #444444;
+    border-style: solid;
+}
+
+#ticket {
+    border-width: 0 0 1px 4px;
+    border-color: rgb(40,68,79);
+    border-style: solid;
+}
+
+#ticketDate {
+    color: #444444;
+    font-size: 16px;
+    margin-bottom: 6px;
+}
+
+#ticketTitle {
+    display:inline-block;
+    position: relative;
+    top:5px;
+    font-size: 25px;
+    text-transform: capitalize;
+    font-weight: bold;
+}
