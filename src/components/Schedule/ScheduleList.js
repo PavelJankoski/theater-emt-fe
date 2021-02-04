@@ -27,7 +27,7 @@ const ScheduleList = (props) => {
                 <div className="col-12 col-sm-12 col-md-6 col-lg-6"
                      style={{textAlign: 'center', paddingTop: '35px', "paddingBottom": '35px'}}>
                     <h2 className="mainTitle">
-                        TICKETS</h2>
+                        UPCOMING SHOWS</h2>
                 </div>
             </div>
             {props.loading ? <div className="text-center w-100" style={{"marginTop": "20%"}}>
@@ -49,9 +49,9 @@ const ScheduleList = (props) => {
 
 const mapStateToProps = state => {
     return {
-        shows: state.showReducer.shows,
-        loading: state.showReducer.loading,
-        error: state.showReducer.error
+        shows: state.theaterReducer.shows,
+        loading: state.theaterReducer.loading,
+        error: state.theaterReducer.error
     };
 };
 

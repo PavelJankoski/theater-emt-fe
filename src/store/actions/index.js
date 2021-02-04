@@ -6,5 +6,12 @@ export {
 } from './authActions';
 
 export {
-    fetchShows
-} from './showActions';
+    fetchShows,
+    deleteShowById,
+    createShow,
+    fetchScenes,
+    createScene,
+    fetchActors,
+    createActor,
+    deleteActor
+} from './theaterActions';

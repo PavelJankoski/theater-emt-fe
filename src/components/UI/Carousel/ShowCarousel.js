@@ -25,7 +25,7 @@ const ShowCarousel = (props) => {
                 {!props.error ? <Carousel >
                     {props.shows.map((show, index) => <Carousel.Item key={show.id.id}>
                         <img
-                            className="d-block w-100"
+                            className="d-block w-100 carousel-image"
                             src={!show.image ? UnavailableImage : 'data:image/jpeg;base64,'+show.image}
                             alt={show.title}
                         />
@@ -39,14 +39,15 @@ const ShowCarousel = (props) => {
 
         </div>
 
+
     );
 }
 
 const mapStateToProps = state => {
     return {
-        shows: state.showReducer.shows,
-        loading: state.showReducer.loading,
-        error: state.showReducer.error
+        shows: state.theaterReducer.shows,
+        loading: state.theaterReducer.loading,
+        error: state.theaterReducer.error
     }
 }
 

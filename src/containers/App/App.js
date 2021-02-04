@@ -13,6 +13,7 @@ import Response from "../../components/Response/Response";
 import {faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
 import ShowList from "../../components/Shows/ShowsList";
 import ScheduleList from "../../components/Schedule/ScheduleList";
+import CreateEditShow from "../../components/Shows/CreateEditShow/CreateEditShow";
 
 function App(props) {
     useEffect(() => {
@@ -21,19 +22,28 @@ function App(props) {
 
     let routes = (
         <Switch>
+            <Route exact path="/login" render={() => (
+                !props.isAuthenticated
+                    ? <Login />
+                    : <Redirect to='/' />
+            )} />
 
-            <Route exact path="/login">
-                <Login/>
-            </Route>
-            <Route exact path="/register">
-                <Register/>
-            </Route>
+            <Route exact path="/register" render={() => (
+                !props.isAuthenticated
+                    ? <Register />
+                    : <Redirect to='/' />
+            )} />
             <Route exact path="/">
                 <ShowCarousel/>
             </Route>
             <Route exact path="/shows">
                 <ShowList/>
             </Route>
+            <Route exact path="/shows/create" render={() => (
+                props.isAuthenticated && props.role === "ROLE_ADMIN"
+                    ? <CreateEditShow />
+                    : <Redirect to='/' />
+            )} />
             <Route exact path="/schedule">
                 <ScheduleList/>
             </Route>
@@ -48,58 +58,10 @@ function App(props) {
                               buttonText={"Back to Home"}/>
                 </div>
             </Route>
-           {/* <Redirect to="/not-found"/>*/}
-            <Redirect to="/"/>
+            <Redirect to="/not-found"/>
         </Switch>
     );
-    if (props.isAuthenticated) {
-        if (props.role === "ROLE_ADMIN") {
-            routes = (
-                <Switch>
-                    <Route exact path="/">
-                        <ShowCarousel/>
-                    </Route>
-                    <Route exact path="/shows">
-                        <ShowList/>
-                    </Route>
-                    <Route exact path="/schedule">
-                        <ScheduleList/>
-                    </Route>
-                    <Route exact path="/contact">
-                        <Contact/>
-                    </Route>
-                    <Route exact path="/not-found">
-                        <div className="container-md bg-white fullWidth overflow-hidden">
-                            <Response icon={faExclamationCircle}
-                                      text={"Error 404: Page not found!"}
-                                      link={"/"}
-                                      buttonText={"Back to Home"}/>
-                        </div>
-                    </Route>
-                    {/*<Redirect to="/not-found"/>*/}
-                    <Redirect to="/"/>
-                </Switch>
-            );
-        } else {
-            routes = (
-                <Switch>
-                    <Route exact path="/">
-                        <ShowCarousel/>
-                    </Route>
-                    <Route exact path="/shows">
-                        <ShowList/>
-                    </Route>
-                    <Route exact path="/schedule">
-                        <ScheduleList/>
-                    </Route>
-                    <Route exact path="/contact">
-                        <Contact/>
-                    </Route>
-                    <Redirect to="/"/>
-                </Switch>
-            );
-        }
-    }
+
     return (
 
         <React.Fragment>
@@ -122,8 +84,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onTryAutoSignIn: () => dispatch(actions.authCheckState()),
-        fetchShows: () => dispatch(actions.fetchShows(""))
+        onTryAutoSignIn: () => dispatch(actions.authCheckState())
     };
 };
 

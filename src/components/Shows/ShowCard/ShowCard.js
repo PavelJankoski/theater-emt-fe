@@ -7,6 +7,13 @@ import {faAngleDoubleRight, faEdit, faTrash} from "@fortawesome/free-solid-svg-i
 import {connect} from "react-redux";
 
 const ShowCard = (props) => {
+
+    const handleDelete = (e, id, title) => {
+        e.preventDefault();
+        props.handleWhichShow(id, title);
+        props.handleShowDeleteShowModal();
+    }
+
     return(
         <div className="containerC"
              style={{backgroundImage: `url(${props.show.image ? 'data:image/jpeg;base64,' + props.show.image : UnavailableImage})`, backgroundSize: '100% 100%'}}>
@@ -29,7 +36,7 @@ const ShowCard = (props) => {
                         details <FontAwesomeIcon icon={faAngleDoubleRight}/></Link>
                     {props.role === "ROLE_ADMIN" ? <React.Fragment>
                         <Link to={"shows/" + props.show.id.id + "/edit"} className="btn btn-sm btn-primary" style={{fontSize: '27px', margin: '0 6px 23px 90px'}}><FontAwesomeIcon icon={faEdit}/> </Link>
-                        <button className="btn btn-sm delete" style={{fontSize: '27px', marginBottom: '23px', cursor: 'pointer'}}><FontAwesomeIcon icon={faTrash}/> </button>
+                        <button onClick={(e) => handleDelete(e, props.show.id.id, props.show.title)} className="btn btn-sm delete" style={{fontSize: '27px', marginBottom: '23px', cursor: 'pointer'}}><FontAwesomeIcon icon={faTrash}/> </button>
                     </React.Fragment> : null}
 
                     </div>

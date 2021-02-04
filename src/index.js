@@ -9,13 +9,13 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import App from './containers/App/App';
 import reportWebVitals from './reportWebVitals';
 import authReducer from "./store/reducers/authReducer";
-import showReducer from "./store/reducers/showReducer";
+import theaterReducer from "./store/reducers/theaterReducer";
 
 const composeEnhancers = (process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null) || compose;
 
 const rootReducer = combineReducers({
     authReducer: authReducer,
-    showReducer: showReducer
+    theaterReducer: theaterReducer
 })
 
 export const store = createStore(rootReducer, composeEnhancers(

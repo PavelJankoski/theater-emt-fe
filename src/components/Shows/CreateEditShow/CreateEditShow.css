@@ -1,0 +1,32 @@
+#titleArea {
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.checkbox-list {
+    padding:2% 0 2% 2%;
+    margin:8px 0 5% 0;
+    border:1px solid #444444;
+    border-radius: 0.5em;
+    box-shadow: 7px 11px 29px -10px rgba(0,0,0,0.75);
+}
+
+@media (min-width: 800px){
+    .checkbox-list {
+        -webkit-column-count: 2; /* Chrome, Safari, Opera */
+        -moz-column-count: 2; /* Firefox */
+        column-count: 2;
+    }
+
+}
+
+@media (min-width: 1300px){
+    .checkbox-list {
+        -webkit-column-count: 3; /* Chrome, Safari, Opera */
+        -moz-column-count: 3; /* Firefox */
+        column-count: 3;
+    }
+
+}
