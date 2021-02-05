@@ -53,7 +53,7 @@ const ShowList = (props) => {
                     color="rgb(40,68,79)"/>
             </div> : <React.Fragment>{props.shows.length !== 0 || props.error ? <div className="cards mt-2 w-100">
                     {allShows}
-                    <DeleteShowModal show={showDeleteModal} handleClose={handleCloseDeleteShowModal} title={currentTitle} id={currentShowId}/>
+                    <DeleteShowModal show={showDeleteModal} handleClose={handleCloseDeleteShowModal} toShows={()=>{}} title={currentTitle} id={currentShowId}/>
                 </div>
                 : <div className="w-100 text-center">
                     <Response icon={faSearch}

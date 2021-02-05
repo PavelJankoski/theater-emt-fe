@@ -5,6 +5,7 @@ import UnavailableImage from "../../../assets/images/unavailable-image.jpg";
 import Logo from '../../../assets/images/logo-without-text.jpg';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTicketAlt} from "@fortawesome/free-solid-svg-icons";
+import {connect} from "react-redux";
 
 const ScheduleItem = (props) => {
     return (
@@ -38,9 +39,9 @@ const ScheduleItem = (props) => {
                     </div>
                     <div className="col-12 col-md-3" style={{alignSelf: 'center'}}>
                         <div className="row pl-3 pr-3">
-                            <Link to={"shows/" + props.showId + "/details"} className="btn btn-md btn-primary mt-3 p-2 col-5 col-md-12"
+                            <Link to={"shows/" + props.show.id.id + "/details"} className="btn btn-md btn-primary mt-3 p-2 col-5 col-md-12"
                                   style={{textAlign: 'center', whiteSpace: 'nowrap'}}>View show</Link>
-                            <Link to={"/schedule/" + props.showId + "/seats"} className="btn btn-md  btn-primary mt-3 p-2 ml-auto col-5 col-md-12"
+                            <Link to={props.isAuthenticated ? "/schedule/" + props.show.id.id + "/seats" : "/login"} className="btn btn-md  btn-primary mt-3 p-2 ml-auto col-5 col-md-12"
                                   style={{textAlign: 'center', whiteSpace: 'nowrap'}}>
                                 <FontAwesomeIcon icon={faTicketAlt}/> Buy tickets
                             </Link>
@@ -55,4 +56,16 @@ const ScheduleItem = (props) => {
     )
 }
 
-export default withRouter(ScheduleItem);
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.authReducer.token !== null
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        //onTryAutoSignIn: () => dispatch(actions.authCheckState())
+    };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ScheduleItem));

@@ -2,6 +2,7 @@ import * as actionTypes from '../actionTypes';
 import {updateObject} from "../../shared/utility";
 
 const initialState = {
+    id: null,
     token: null,
     email: null,
     role: null,
@@ -19,6 +20,7 @@ const authStart = (state, action) => {
 
 const authSuccess = (state, action) => {
     return updateObject(state, {
+        id: action.id,
         token: action.token,
         email: action.email,
         role: action.role,
@@ -44,6 +46,7 @@ const setLoginError = (state, action) => {
 
 const logout = (state, action) => {
     return updateObject(state, {
+        id: null,
         token: null,
         email: null,
         role: null,

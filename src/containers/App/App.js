@@ -14,6 +14,8 @@ import {faExclamationCircle} from "@fortawesome/free-solid-svg-icons";
 import ShowList from "../../components/Shows/ShowsList";
 import ScheduleList from "../../components/Schedule/ScheduleList";
 import CreateEditShow from "../../components/Shows/CreateEditShow/CreateEditShow";
+import ShowDetails from "../../components/Shows/ShowDetails/ShowDetails";
+import Seats from "../../components/Schedule/Seats/Seats";
 
 function App(props) {
     useEffect(() => {
@@ -41,12 +43,25 @@ function App(props) {
             </Route>
             <Route exact path="/shows/create" render={() => (
                 props.isAuthenticated && props.role === "ROLE_ADMIN"
-                    ? <CreateEditShow />
+                    ? <CreateEditShow isEdit={false}/>
                     : <Redirect to='/' />
             )} />
+            <Route exact path="/shows/:showId/edit" render={() => (
+                props.isAuthenticated && props.role === "ROLE_ADMIN"
+                    ? <CreateEditShow isEdit={true}/>
+                    : <Redirect to='/' />
+            )} />
+            <Route exact path="/shows/:showId/details">
+                <ShowDetails/>
+            </Route>
             <Route exact path="/schedule">
                 <ScheduleList/>
             </Route>
+            <Route exact path="/schedule/:showId/seats" render={() => (
+                props.isAuthenticated
+                    ? <Seats/>
+                    : <Redirect to='/' />
+            )} />
             <Route exact path="/contact">
                 <Contact/>
             </Route>

@@ -7,7 +7,7 @@ import {withRouter} from "react-router-dom";
 import * as actions from "../../../store/actions";
 import ClipLoader from "react-spinners/ClipLoader";
 import Response from "../../Response/Response";
-import {faTimes} from "@fortawesome/free-solid-svg-icons";
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
 
 const ShowCarousel = (props) => {
     useEffect(() => {
@@ -22,7 +22,7 @@ const ShowCarousel = (props) => {
                     size={150}
                     color="rgb(40,68,79)"/>
             </div> : <React.Fragment>
-                {!props.error ? <Carousel >
+                {!props.error && props.shows.length !== 0 ? <Carousel >
                     {props.shows.map((show, index) => <Carousel.Item key={show.id.id}>
                         <img
                             className="d-block w-100 carousel-image"
@@ -34,7 +34,7 @@ const ShowCarousel = (props) => {
                             <p>{show.description}</p>
                         </Carousel.Caption>
                     </Carousel.Item>)}
-                </Carousel> : <Response icon={faTimes} text={"Cannot load shows from server"} buttonText={null} link={null} />}
+                </Carousel> : <Response icon={faSearch} text={"No shows found"} buttonText={null} link={null} />}
             </React.Fragment>}
 
         </div>

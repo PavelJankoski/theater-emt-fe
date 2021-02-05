@@ -41,6 +41,68 @@ const fetchShowsFail = () => {
     }
 }
 
+export const fetchShow = (showId) => {
+    return (dispatch, getState) => {
+        dispatch(fetchShowStart())
+            API_DRIVER.get("theater-api/shows/all/" + showId).then((resp) => {
+                API_DRIVER.get("reservations-api/reservations/" + showId).then((res)=>{
+                    dispatch(fetchShowSuccess(resp.data, calculateRows(resp.data, res.data)));
+                }).catch(err => {
+                    //
+                })
+            }).catch(() => {
+                dispatch(fetchShowFail());
+            })
+
+    }
+}
+
+const fetchShowStart = () => {
+    return {
+        type: actionTypes.FETCH_SHOWS_START
+    }
+}
+
+const calculateRows = (show, reservations) => {
+    let rows;
+    if(show.scene.capacity%show.scene.seatsInRow === 0){
+        rows = show.scene.capacity/show.scene.seatsInRow;
+    }
+    else{
+        rows = Math.floor(show.scene.capacity/show.scene.seatsInRow) + 1;
+    }
+    let cnt = 0;
+    let allSeats =[];
+    for(let i = 0 ;i<rows;i++){
+        let oneRow = [];
+        for(let j = 0 ;j<show.scene.seatsInRow;j++){
+            oneRow.push({...reservations[cnt], seatNo: j+1, seatRow:i+1});
+            cnt++;
+            if(cnt===reservations.length){
+                break;
+            }
+        }
+
+        allSeats.push(oneRow);
+
+    }
+    return allSeats;
+}
+
+const fetchShowSuccess = (show, seats) => {
+    return {
+        type: actionTypes.FETCH_SHOW_SUCCESS,
+        show: show,
+        seats: seats
+    }
+}
+
+const fetchShowFail = () => {
+    return {
+        type: actionTypes.FETCH_SHOW_FAIL
+    }
+}
+
 export const deleteShowById = (id) => {
     setAuthToken();
     return dispatch => {
@@ -74,6 +136,25 @@ export const createShow = (formData) => {
 const createShowSuccess = (show) => {
     return {
         type: actionTypes.CREATE_SHOW_SUCCESS,
+        show: show
+    }
+}
+
+export const editShow = (showId, formData) => {
+    setAuthToken();
+    return dispatch => {
+        API_DRIVER.put("theater-api/shows/admin/edit/" + showId, formData).then((resp) => {
+            dispatch(editShowSuccess(showId, resp.data));
+        }).catch(() => {
+            //
+        });
+    }
+}
+
+const editShowSuccess = (showId, show) => {
+    return {
+        type: actionTypes.EDIT_SHOW_SUCCESS,
+        id: showId,
         show: show
     }
 }

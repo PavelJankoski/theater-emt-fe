@@ -5,24 +5,26 @@ export const authCheckState = () => {
     return dispatch => {
         if(!sessionStorage.getItem('token')){
             if (localStorage.getItem('token')) {
+                const id = localStorage.getItem('id');
                 const token = localStorage.getItem('token');
                 const email = localStorage.getItem('email');
                 const name = localStorage.getItem('name');
                 const surname = localStorage.getItem('surname');
                 const userRole = localStorage.getItem('role');
 
-                dispatch(authSuccess(token, email, name, surname ,userRole));
+                dispatch(authSuccess(id, token, email, name, surname ,userRole));
 
             }
         }
         else{
+            const id = sessionStorage.getItem('id');
             const token = sessionStorage.getItem('token');
             const email = sessionStorage.getItem('email');
             const name = sessionStorage.getItem('name');
             const surname = sessionStorage.getItem('surname');
             const userRole = sessionStorage.getItem('role');
 
-            dispatch(authSuccess(token, email, name, surname ,userRole));
+            dispatch(authSuccess(id, token, email, name, surname ,userRole));
 
         }
     }
@@ -41,13 +43,14 @@ export const auth = (email, password, rememberMe) => {
             if(rememberMe) {
                 storage = localStorage;
             }
+            storage.setItem('id', responseData.id);
             storage.setItem('token', responseData.accessToken);
             storage.setItem('email', responseData.email);
             storage.setItem('name', responseData.name);
             storage.setItem('surname', responseData.surname);
             storage.setItem('role', responseData.roles[0]);
             setAuthToken();
-            dispatch(authSuccess(responseData.accessToken, responseData.email, responseData.name, responseData.surname, responseData.roles[0]));
+            dispatch(authSuccess(responseData.id, responseData.accessToken, responseData.email, responseData.name, responseData.surname, responseData.roles[0]));
 
         }).catch(err => {
             dispatch(authFail());
@@ -61,9 +64,10 @@ export const authStart = () => {
     }
 }
 
-export const authSuccess = (token, email, name, surname, role) => {
+export const authSuccess = (id, token, email, name, surname, role) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
+        id: id,
         token: token,
         email: email,
         name: name,
@@ -89,6 +93,7 @@ export const logout = () => {
     if(localStorage.getItem('token')) {
         storage = localStorage;
     }
+    storage.removeItem('id');
     storage.removeItem('token');
     storage.removeItem('email');
     storage.removeItem('name');

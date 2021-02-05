@@ -5,6 +5,10 @@ const initialState = {
     shows: [],
     scenes: [],
     actors: [],
+    seats: [],
+    currentShow: {},
+    loadingShow: false,
+    errorShow: false,
     loading: false,
     error: false
 };
@@ -20,6 +24,29 @@ const fetchShowsSuccess = (state, action) => {
     return updateObject(state, {
         shows: action.shows,
         loading: false
+    })
+}
+
+const fetchShowFail = (state, action) => {
+    return updateObject(state, {
+        loadingShow: false,
+        errorShow: true
+    })
+}
+
+const fetchShowStart = (state, action) => {
+    return updateObject(state, {
+        errorShow: false,
+        loadingShow: true
+
+    })
+}
+
+const fetchShowSuccess = (state, action) => {
+    return updateObject(state, {
+        currentShow: action.show,
+        loadingShow: false,
+        seats: action.seats
     })
 }
 
@@ -43,6 +70,18 @@ const deleteShowSuccess = (state, action) => {
 const createShowSuccess = (state, action) => {
     let tmpShows = [...state.shows];
     tmpShows.push(action.show);
+    return updateObject(state, {
+        shows: tmpShows
+    })
+}
+
+const editShowSuccess = (state, action) => {
+    let tmpShows = [...state.shows];
+    for(let i = 0 ;i<tmpShows.length;i++) {
+        if(action.id === tmpShows[i].id.id){
+            tmpShows[i] = action.show;
+        }
+    }
     return updateObject(state, {
         shows: tmpShows
     })
@@ -92,8 +131,12 @@ const theaterReducer = (state = initialState, action ) => {
         case actionTypes.FETCH_SHOWS_START: return fetchShowsStart(state,action);
         case actionTypes.FETCH_SHOWS_SUCCESS: return fetchShowsSuccess(state,action);
         case actionTypes.FETCH_SHOWS_FAIL: return fetchShowsFail(state,action);
+        case actionTypes.FETCH_SHOW_START: return fetchShowStart(state,action);
+        case actionTypes.FETCH_SHOW_SUCCESS: return fetchShowSuccess(state,action);
+        case actionTypes.FETCH_SHOW_FAIL: return fetchShowFail(state,action);
         case actionTypes.DELETE_SHOW_SUCCESS: return deleteShowSuccess(state,action);
         case actionTypes.CREATE_SHOW_SUCCESS: return createShowSuccess(state,action);
+        case actionTypes.EDIT_SHOW_SUCCESS: return editShowSuccess(state,action);
         case actionTypes.FETCH_SCENES_SUCCESS: return fetchScenesSuccess(state,action);
         case actionTypes.CREATE_SCENE_SUCCESS: return createSceneSuccess(state,action);
         case actionTypes.FETCH_ACTORS_SUCCESS: return fetchActorsSuccess(state,action);

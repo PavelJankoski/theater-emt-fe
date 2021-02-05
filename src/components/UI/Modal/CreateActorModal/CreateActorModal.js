@@ -1,7 +1,6 @@
 import './CreateActorModal.css';
 import {Button, Form, Modal} from "react-bootstrap";
 import * as actions from "../../../../store/actions";
-import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 
 const CreateActorModal = (props) => {

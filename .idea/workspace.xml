@@ -4,17 +4,24 @@
     <list default="true" id="8a46dbd4-0522-4b31-acc9-b1f838b4e975" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Schedule/ScheduleItem/ScheduleItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Schedule/ScheduleItem/ScheduleItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Schedule/ScheduleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Schedule/ScheduleList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Shows/ShowCard/ShowCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shows/ShowCard/ShowCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Shows/CreateEditShow/CreateEditShow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shows/CreateEditShow/CreateEditShow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Shows/ShowsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shows/ShowsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Carousel/ShowCarousel.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Carousel/ShowCarousel.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UI/Carousel/ShowCarousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Carousel/ShowCarousel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Modal/CreateActorModal/CreateActorModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Modal/CreateActorModal/CreateActorModal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Modal/DeleteShowModal/DeleteShowModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Modal/DeleteShowModal/DeleteShowModal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/authActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/showActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/theaterActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/showReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/theaterReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/theaterActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/theaterActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/authReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/theaterReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/theaterReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/UI/Modal/DeleteShowModal" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/images" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -55,8 +62,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\src\components\UI\Modal\DeleteShowModal" />
       <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\src\assets\images" />
+      <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\src\components\UI\Modal\DeleteShowModal" />
       <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\src\components" />
       <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\src\shared" />
       <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\public" />
@@ -100,7 +107,9 @@
       <workItem from="1612215627198" duration="1271000" />
       <workItem from="1612304163368" duration="8097000" />
       <workItem from="1612314397156" duration="9825000" />
-      <workItem from="1612391620932" duration="20478000" />
+      <workItem from="1612391620932" duration="20788000" />
+      <workItem from="1612452555754" duration="16211000" />
+      <workItem from="1612484826122" duration="15313000" />
     </task>
     <servers />
   </component>

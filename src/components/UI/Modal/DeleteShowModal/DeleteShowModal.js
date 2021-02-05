@@ -23,7 +23,10 @@ const DeleteShowModal = (props) => {
                 <Button variant="secondary" onClick={props.handleClose}>
                     Close
                 </Button>
-                <Button variant="danger" onClick={handleDeleteButton}>
+                <Button variant="danger" onClick={(e) => {
+                    handleDeleteButton(e);
+                    props.toShows();
+                }}>
                     Delete
                 </Button>
             </Modal.Footer>

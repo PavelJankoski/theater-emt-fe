@@ -1,5 +1,5 @@
 import './CreateEditShow.css';
-import {Link, Redirect, useHistory, withRouter} from "react-router-dom";
+import {Link, Redirect, useHistory, useParams, withRouter} from "react-router-dom";
 import {connect} from 'react-redux';
 import {Form} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
@@ -11,8 +11,10 @@ import * as actions from "../../../store/actions";
 import DeleteActorModal from "../../UI/Modal/DeleteActorModal/DeleteActorModal";
 
 const CreateEditShow = (props) => {
+    const {showId} = useParams();
     const [showSceneModal, setShowSceneModal] = useState(false);
     const [showActorModal, setShowActorModal] = useState(false);
+    const [actorsCheck, setActorsCheck] = useState(false);
     const [showDeleteActorModal, setShowDeleteActorModal] = useState(false);
     const [currentActor, setCurrentActor] = useState({fullName: {firstName: "", lastName: ""}});
     const [show, setShow] = useState(
@@ -27,10 +29,12 @@ const CreateEditShow = (props) => {
             ticketPrice: {
                 currency: "MKD",
                 amount: ""
-            }
+            },
+            actors: []
 
         }
     )
+
 
     const handleCloseSceneModal = () => setShowSceneModal(false);
     const handleCloseActorModal = () => setShowActorModal(false);
@@ -41,10 +45,31 @@ const CreateEditShow = (props) => {
 
     useEffect(() => {
         // Update the document title using the browser API
-        document.title = `Theater | Create Show`;
+        document.title = `Theater | ${!props.isEdit ? "Create Show" : "Edit Show"}`;
         props.fetchScenes();
         props.fetchActors();
+        if(props.isEdit) {
+            let tmpShow = props.shows.find(s=>s.id.id === showId);
+            let dateTimeParts = tmpShow.from.split("T");
+            setShow(tmpShow);
+            document.getElementById("showDate").value = dateTimeParts[0];
+            let time = dateTimeParts[1].split(":");
+            document.getElementById("showTime").value = time[0] + ":" + time[1];
+            document.getElementById("showScene").value = tmpShow.scene.id.id;
+
+        }
     }, []);
+
+    useEffect(() => {
+        // Update the document title using the browser API
+        if(!actorsCheck && document.getElementById("actorCheckboxes").hasChildNodes() && props.isEdit){
+            setActorsCheck(true);
+            let tmpShow = props.shows.find(s=>s.id.id === showId);
+            setActorCheckboxes(tmpShow);
+        }
+    });
+
+
 
 
     const todayDate = new Date().toLocaleDateString().split("/");
@@ -57,26 +82,36 @@ const CreateEditShow = (props) => {
         setShow({...show, [e.target.name]: e.target.value});
     }
 
+    const setActorCheckboxes = (tmpShow) => {
+
+        for(let i = 0 ; i<tmpShow.actors.length; i++) {
+            document.getElementById(tmpShow.actors[i].id.id).checked = true;
+        }
+    }
+
     const extractSelectedActors = () => {
         const selectedActors = [];
         const actorCheckboxes = document.getElementsByName("actor");
         for(let i = 0 ; i<actorCheckboxes.length;i++) {
             if (actorCheckboxes[i].checked) {
-                selectedActors.push(props.actors.find(a=>a.id.id === actorCheckboxes[i].value))
+                selectedActors.push(props.actors.find(a=>a.id.id === actorCheckboxes[i].id))
             }
         }
         return selectedActors
     }
 
 
-    const handleCreateShow = (e) => {
+    const handleCreateEditShow = (e) => {
         e.preventDefault();
         const dateAndTime = e.target.showDate.value + "T" + e.target.showTime.value + ":00";
         const tmpShow = {...show, from: dateAndTime, scene: props.scenes.find(s => s.id.id === e.target.showScene.value), actors: extractSelectedActors()};
         let formData = new FormData();
         formData.append('show', JSON.stringify(tmpShow));
-        formData.append('image', e.target.showPicture.files[0]);
-        props.createShow(formData);
+        let image = e.target.showPicture.files[0];
+        if(image) {
+            formData.append('image', image)
+        }
+        !props.isEdit ? props.createShow(formData) : props.editShow(showId, formData);
         props.history.push('/shows');
     }
 
@@ -90,7 +125,7 @@ const CreateEditShow = (props) => {
     const renderActors = props.actors.map((actor, idx) => {
         return (
             <div className="checkbox" key={actor.id.id}>
-                <label><input type="checkbox" name="actor" value={actor.id.id}
+                <label><input type="checkbox" name="actor" id={actor.id.id}
                               style={{marginRight: '7px'}}/>{actor.fullName.firstName} {actor.fullName.lastName}
                     <button onClick={(e) => {
                         e.preventDefault();
@@ -110,11 +145,11 @@ const CreateEditShow = (props) => {
             <div className="row">
                 <div className="col-12 col-sm-12 col-md-6 col-lg-6" id="titleArea">
                     <h2 className="mainTitle">
-                        Create Show</h2>
+                        {!props.isEdit ? "Create Show" : "Edit Show"}</h2>
                 </div>
             </div>
 
-            <Form className="container" onSubmit={handleCreateShow}>
+            <Form className="container" onSubmit={handleCreateEditShow}>
                 <Form.Group controlId="title">
                     <Form.Label>Show title</Form.Label>
                     <Form.Control type="text"
@@ -174,7 +209,7 @@ const CreateEditShow = (props) => {
                     <div className="col-12">
                         <div className="row">
                             <div className="col-10">
-                                <div className="checkbox-list">
+                                <div className="checkbox-list" id="actorCheckboxes">
                                     {renderActors}
                                 </div>
                             </div>
@@ -255,13 +290,13 @@ const CreateEditShow = (props) => {
 
                     <div className="col-md-3 col-12">
                         <Form.Group>
-                            <Form.File className="mt-1" id="showPicture" name="showPicture" label="Show picture" accept="image/*" required/>
+                            <Form.File className="mt-1" id="showPicture" name="showPicture" label="Show picture" accept="image/*"/>
                         </Form.Group>
                     </div>
                 </div>
 
                 <div className="row d-flex flex-row-reverse mr-3 mt-4 mb-4">
-                    <input type="submit" className="btn btn-lg btn-primary" value="Create show"/>
+                    <button type="submit" className="btn btn-lg btn-primary">{!props.isEdit ? "Create Show" : "Edit Show"}</button>
                     <div className="center mr-3">
                         <Link to={"/shows"} className="btn btn-secondary btn-lg">Back</Link>
                     </div>
@@ -276,6 +311,7 @@ const CreateEditShow = (props) => {
 
 const mapStateToProps = state => {
     return {
+        shows: state.theaterReducer.shows,
         scenes: state.theaterReducer.scenes,
         actors: state.theaterReducer.actors
     };
@@ -285,6 +321,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         createShow: (formData) => dispatch(actions.createShow(formData)),
+        editShow: (showId, formData) => dispatch(actions.editShow(showId, formData)),
         fetchScenes: () => dispatch(actions.fetchScenes()),
         fetchActors: () => dispatch(actions.fetchActors()),
         deleteActor: (actorId) => dispatch(actions.deleteActor(actorId))

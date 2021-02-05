@@ -35,7 +35,7 @@ const ScheduleList = (props) => {
                         size={150}
                         color="rgb(40,68,79)"/>
                 </div> : <React.Fragment>
-                {scheduledShows.length===0 ? <Response icon={faInfoCircle} text="No incoming shows in the next period" buttonText={null} link={null}/> : <div className="container" style={{paddingBottom: '50px'}}>
+                {scheduledShows.length===0 ? <Response icon={faInfoCircle} text="No upcoming shows in the next period" buttonText={null} link={null}/> : <div className="container" style={{paddingBottom: '50px'}}>
 
                     {scheduledShows}
 
