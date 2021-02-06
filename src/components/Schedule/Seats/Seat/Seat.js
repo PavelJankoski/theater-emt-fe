@@ -8,6 +8,7 @@ const Seat = (props) => {
     const [isSelected, setIsSelected] = useState(false);
 
     const handleSeatSelection = () => {
+
         if(!props.reserved) {
             var seat = document.getElementById(props.id);
             if(!isSelected) {
@@ -18,6 +19,8 @@ const Seat = (props) => {
                 seat.classList.remove("selected");
                 seat.classList.add("available")
             }
+            let isDisabled = document.getElementsByClassName("selected").length === 0;
+            props.changeIsDisabled(isDisabled);
             setIsSelected(!isSelected)
         }
 

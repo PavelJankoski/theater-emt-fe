@@ -4,6 +4,7 @@ import {updateObject} from "../../shared/utility";
 const initialState = {
     reservations: [],
     loading: false,
+    success: false,
     error: false
 };
 
@@ -29,16 +30,34 @@ const fetchReservationsFail = (state, action) => {
 }
 
 const makeReservationSuccess = (state, action) => {
-    return state
+    return updateObject(state, {
+        error: false,
+        success: true
+    });
+}
+
+const makeReservationFail = (state, action) => {
+    return updateObject(state, {
+        error: true,
+        success: false
+    });
+}
+
+const resetErrorAndSuccess = (state, action) => {
+    return updateObject(state, {
+        error: false,
+        success: false
+    })
 }
 
 const reservationReducer = (state = initialState, action ) => {
     switch ( action.type ) {
-        //case actionTypes.AUTH_START: return authStart(state,action);
         case actionTypes.FETCH_RESERVATIONS_START: return fetchReservationsStart(state, action);
         case actionTypes.FETCH_RESERVATIONS_SUCCESS: return fetchReservationsSuccess(state, action);
         case actionTypes.FETCH_RESERVATIONS_FAIL: return fetchReservationsFail(state, action);
         case actionTypes.MAKE_RESERVATION_SUCCESS: return makeReservationSuccess(state, action);
+        case actionTypes.MAKE_RESERVATION_FAIL: return makeReservationFail(state, action);
+        case actionTypes.RESET_ERROR_AND_SUCCES: return resetErrorAndSuccess(state, action);
         default: return state;
     }
 };

@@ -4,24 +4,19 @@
     <list default="true" id="8a46dbd4-0522-4b31-acc9-b1f838b4e975" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Response/Response.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Response/Response.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Schedule/ScheduleItem/ScheduleItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Schedule/ScheduleItem/ScheduleItem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Schedule/ScheduleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Schedule/ScheduleList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Shows/CreateEditShow/CreateEditShow.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shows/CreateEditShow/CreateEditShow.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Schedule/Seats/Seat/Seat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Schedule/Seats/Seat/Seat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Schedule/Seats/Seats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Schedule/Seats/Seats.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Shows/ShowDetails/ShowDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shows/ShowDetails/ShowDetails.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Shows/ShowsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shows/ShowsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Carousel/ShowCarousel.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Carousel/ShowCarousel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Modal/CreateActorModal/CreateActorModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Modal/CreateActorModal/CreateActorModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UI/Modal/DeleteShowModal/DeleteShowModal.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Modal/DeleteShowModal/DeleteShowModal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actionTypes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/authActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/reservationActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/reservationActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/theaterActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/theaterActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/authReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/authReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/reducers/theaterReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/theaterReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/reservationReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/reservationReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -58,6 +53,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.1.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -109,7 +105,9 @@
       <workItem from="1612314397156" duration="9825000" />
       <workItem from="1612391620932" duration="20788000" />
       <workItem from="1612452555754" duration="16211000" />
-      <workItem from="1612484826122" duration="15313000" />
+      <workItem from="1612484826122" duration="15489000" />
+      <workItem from="1612553768156" duration="707000" />
+      <workItem from="1612574650504" duration="9061000" />
     </task>
     <servers />
   </component>

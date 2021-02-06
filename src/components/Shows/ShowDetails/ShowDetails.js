@@ -17,9 +17,23 @@ const ShowDetails = (props) => {
 
     useEffect(() => {
         props.fetchShow(showId);
+        props.didRateShow(showId);
+        props.getAvgAndCountForShow(showId);
     }, []);
 
-
+    const handleRatingChange = (value) => {
+        if(props.isAuthenticated) {
+            const data = {
+                userId: props.id,
+                showId: showId,
+                rating: value
+            }
+            props.rateShow(data);
+        }
+        else{
+            props.history.push("/login");
+        }
+    }
 
     return (
         <div className="container-md bg-white fullWidth">
@@ -67,13 +81,18 @@ const ShowDetails = (props) => {
                                     </div>
                                     <div className="col-5 m-auto text-center" style={{paddingTop: '10px'}}>
 
+
                                         <div id="starRating">
                                             <Rating
-                                                /*readonly={true}*/
+                                                onChange={handleRatingChange}
+                                                fractions={2}
+                                                initialRating={props.averageRating}
+                                                readonly={props.alreadyRated}
                                                 emptySymbol=<FontAwesomeIcon color="rgb(250, 189, 100)" icon={faStarEmpty} size="2x"/>
                                                 fullSymbol=<FontAwesomeIcon color="rgb(250, 189, 100)" icon={faStar} size="2x"/>
                                             />
-                                            <div id="ratingText">(4.5/5) out of 20 rating(s)</div>
+                                            <div id="ratingText">({props.averageRating}/5) out of {props.totalRatings} rating(s)</div>
+                                            {props.alreadyRated ? <span className="text-success">Thank you for your feedback!</span> : null}
                                         </div>
 
 
@@ -167,7 +186,7 @@ const ShowDetails = (props) => {
                                           style={{verticalAlign: 'middle'}}
                                           type="button" className="btn btn-secondary btn-lg">Back
                                     </Link>
-                                    {Date.now()<new Date(props.show.from) ? <Link to={"/schedule/" + showId + "/seats"}
+                                    {Date.now()<new Date(props.show.from) ? <Link to={props.isAuthenticated ? "/schedule/" + showId + "/seats" : "/login"}
                                                                                   className="nav-link hoverableBox ml-3 mr-3 buyTicketsButton"><FontAwesomeIcon icon={faTicketAlt} /> Reserve</Link> : null}
 
 
@@ -190,13 +209,18 @@ const ShowDetails = (props) => {
 
         </div>
     )
-}
+};
 
 const mapStateToProps = state => {
     return {
+        isAuthenticated: state.authReducer.token !== null,
         show: state.theaterReducer.currentShow,
         loading: state.theaterReducer.loadingShow,
-        role: state.authReducer.role
+        role: state.authReducer.role,
+        id: state.authReducer.id,
+        averageRating: state.ratingReducer.average,
+        totalRatings: state.ratingReducer.total,
+        alreadyRated: state.ratingReducer.alreadyRated
     };
 };
 
@@ -204,7 +228,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchShow: (showId) => dispatch(actions.fetchShow(showId)),
-        deleteShow: (showId) => dispatch(actions.deleteShowById(showId))
+        deleteShow: (showId) => dispatch(actions.deleteShowById(showId)),
+        didRateShow: (showId) => dispatch(actions.didUserRateShow(showId)),
+        getAvgAndCountForShow: (showId) => dispatch(actions.avgAndCountForShow(showId)),
+        rateShow: (data) => dispatch(actions.rateShow(data))
     };
 };
 

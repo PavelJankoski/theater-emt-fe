@@ -42,10 +42,10 @@ const fetchShowsFail = () => {
 }
 
 export const fetchShow = (showId) => {
-    return (dispatch, getState) => {
+    return dispatch => {
         dispatch(fetchShowStart())
             API_DRIVER.get("theater-api/shows/all/" + showId).then((resp) => {
-                API_DRIVER.get("reservations-api/reservations/" + showId).then((res)=>{
+                API_DRIVER.get("reservations-api/reservations/all/" + showId).then((res)=>{
                     dispatch(fetchShowSuccess(resp.data, calculateRows(resp.data, res.data)));
                 }).catch(err => {
                     //

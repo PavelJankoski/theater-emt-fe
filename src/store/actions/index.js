@@ -21,5 +21,12 @@ export {
 
 export {
     fetchReservations,
-    makeReservation
+    makeReservation,
+    resetErrorAndSuccess
 } from './reservationActions';
+
+export {
+    didUserRateShow,
+    avgAndCountForShow,
+    rateShow
+} from './ratingActions';

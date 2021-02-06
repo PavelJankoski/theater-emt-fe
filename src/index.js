@@ -11,13 +11,15 @@ import reportWebVitals from './reportWebVitals';
 import authReducer from "./store/reducers/authReducer";
 import theaterReducer from "./store/reducers/theaterReducer";
 import reservationReducer from "./store/reducers/reservationReducer";
+import ratingReducer from "./store/reducers/ratingReducer";
 
 const composeEnhancers = (process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null) || compose;
 
 const rootReducer = combineReducers({
     authReducer: authReducer,
     theaterReducer: theaterReducer,
-    reservationReducer: reservationReducer
+    reservationReducer: reservationReducer,
+    ratingReducer: ratingReducer
 })
 
 export const store = createStore(rootReducer, composeEnhancers(

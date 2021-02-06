@@ -5,7 +5,7 @@ export const fetchReservations = (showId) => {
     setAuthToken();
     return dispatch => {
         dispatch(fetchReservationsStart())
-        API_DRIVER.get("reservations-api/reservations/" + showId).then((res)=> {
+        API_DRIVER.get("reservations-api/reservations/all/" + showId).then((res)=> {
             dispatch(fetchReservationsSuccess(res.data));
         }).catch(err => {
             dispatch(fetchReservationsFail());
@@ -40,16 +40,15 @@ export const makeReservation = (data) => {
     setAuthToken();
     return dispatch => {
         API_DRIVER.put('reservations-api/reservations/make-reservation', data).then((res) => {
-            makeReservationSuccess(res.data);
+            dispatch({type: actionTypes.MAKE_RESERVATION_SUCCESS, madeReservations: res.data});
         }).catch(err => {
-            //
+            dispatch({type:actionTypes.MAKE_RESERVATION_FAIL})
         })
     }
 }
 
-const makeReservationSuccess = (reservations) => {
+export const resetErrorAndSuccess = () => {
     return {
-        type: actionTypes.MAKE_RESERVATION_SUCCESS,
-        madeReservations: reservations
+        type: actionTypes.RESET_ERROR_AND_SUCCES
     }
 }

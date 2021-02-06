@@ -62,10 +62,5 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchToProps = dispatch => {
-    return {
-        //onTryAutoSignIn: () => dispatch(actions.authCheckState())
-    };
-};
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ScheduleItem));
+export default withRouter(connect(mapStateToProps)(ScheduleItem));

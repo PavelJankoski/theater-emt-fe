@@ -51,7 +51,7 @@ const ShowList = (props) => {
                 <ClipLoader
                     size={150}
                     color="rgb(40,68,79)"/>
-            </div> : <React.Fragment>{props.shows.length !== 0 || props.error ? <div className="cards mt-2 w-100">
+            </div> : <React.Fragment>{props.shows.length !== 0 && !props.error ? <div className="cards mt-2 w-100">
                     {allShows}
                     <DeleteShowModal show={showDeleteModal} handleClose={handleCloseDeleteShowModal} toShows={()=>{}} title={currentTitle} id={currentShowId}/>
                 </div>

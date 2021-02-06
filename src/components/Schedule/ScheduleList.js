@@ -13,6 +13,7 @@ const ScheduleList = (props) => {
         // Update the document title using the browser API
         document.title = `Theater | Schedule`;
         props.fetchShows();
+        props.resetErrorAndSuccess();
     }, []);
 
     const scheduledShows = props.shows.filter(s=>Date.now()<new Date(s.from)).map((show, index)=>{
@@ -57,7 +58,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchShows: () => dispatch(actions.fetchShows(""))
+        fetchShows: () => dispatch(actions.fetchShows("")),
+        resetErrorAndSuccess: () => dispatch(actions.resetErrorAndSuccess())
     };
 };
 
