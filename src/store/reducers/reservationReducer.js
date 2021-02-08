@@ -3,6 +3,7 @@ import {updateObject} from "../../shared/utility";
 
 const initialState = {
     reservations: [],
+    madeReservations: [],
     loading: false,
     success: false,
     error: false
@@ -30,7 +31,9 @@ const fetchReservationsFail = (state, action) => {
 }
 
 const makeReservationSuccess = (state, action) => {
+    const tmpMadeReservations = [...state.madeReservations];
     return updateObject(state, {
+        madeReservations: tmpMadeReservations.concat(action.madeReservations),
         error: false,
         success: true
     });
@@ -50,6 +53,18 @@ const resetErrorAndSuccess = (state, action) => {
     })
 }
 
+const reservationsForUser = (state, action) => {
+    return updateObject(state, {
+        madeReservations: action.madeReservations
+    })
+}
+
+const cancelReservation = (state, action) => {
+    return updateObject(state, {
+        madeReservations: state.madeReservations.filter(r=>r.id.id !== action.id)
+    })
+}
+
 const reservationReducer = (state = initialState, action ) => {
     switch ( action.type ) {
         case actionTypes.FETCH_RESERVATIONS_START: return fetchReservationsStart(state, action);
@@ -57,7 +72,9 @@ const reservationReducer = (state = initialState, action ) => {
         case actionTypes.FETCH_RESERVATIONS_FAIL: return fetchReservationsFail(state, action);
         case actionTypes.MAKE_RESERVATION_SUCCESS: return makeReservationSuccess(state, action);
         case actionTypes.MAKE_RESERVATION_FAIL: return makeReservationFail(state, action);
-        case actionTypes.RESET_ERROR_AND_SUCCES: return resetErrorAndSuccess(state, action);
+        case actionTypes.RESET_ERROR_AND_SUCCESS: return resetErrorAndSuccess(state, action);
+        case actionTypes.RESERVATIONS_FOR_USER: return reservationsForUser(state, action);
+        case actionTypes.CANCEL_RESERVATION: return cancelReservation(state, action);
         default: return state;
     }
 };

@@ -69,7 +69,7 @@ const Seats = (props) => {
                     </div>
                 </div>
 
-            {props.success ? <Response text={`Congratulations, you successfully reserved your seats for ${props.show.title}!`} icon={faThumbsUp} link={"/schedule"} buttonText={"Back to schedule"}/> : null}
+            {props.success ? <Response text={`Congratulations, you successfully reserved your seat(s) for ${props.show.title}!`} icon={faThumbsUp} link={"/schedule"} buttonText={"Back to schedule"}/> : null}
             {props.error ? <Response text={`Oops, something went wrong`} icon={faThumbsDown} link={"/schedule"} buttonText={"Back to schedule"}/> : null}
             {!props.success && !props.error ? <React.Fragment>
                 {zeroSelectedSeats ?

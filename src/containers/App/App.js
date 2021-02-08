@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import './App.css';
 import {Route, Switch, withRouter, Redirect} from 'react-router-dom';
 import {connect} from "react-redux";
@@ -16,11 +16,16 @@ import ScheduleList from "../../components/Schedule/ScheduleList";
 import CreateEditShow from "../../components/Shows/CreateEditShow/CreateEditShow";
 import ShowDetails from "../../components/Shows/ShowDetails/ShowDetails";
 import Seats from "../../components/Schedule/Seats/Seats";
+import TicketCartModal from "../../components/UI/Modal/TicketCartModal/TicketCartModal";
 
 function App(props) {
+    const [showTicketModal, setShowTicketModal] = useState(false);
     useEffect(() => {
         props.onTryAutoSignIn();
     }, []);
+
+    const handleTicketModalClose = () => setShowTicketModal(false);
+    const handleTicketModalShow = () => setShowTicketModal(true);
 
     let routes = (
         <Switch>
@@ -80,11 +85,11 @@ function App(props) {
     return (
 
         <React.Fragment>
-
             <div className="background"/>
-            <Navbar/>
+            <Navbar handleTicketModalShow={handleTicketModalShow}/>
             {routes}
             <Footer/>
+            <TicketCartModal show={showTicketModal} handleClose={handleTicketModalClose}/>
         </React.Fragment>
     );
 }

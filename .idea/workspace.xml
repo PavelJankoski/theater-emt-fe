@@ -4,18 +4,14 @@
     <list default="true" id="8a46dbd4-0522-4b31-acc9-b1f838b4e975" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Response/Response.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Response/Response.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Schedule/ScheduleItem/ScheduleItem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Schedule/ScheduleItem/ScheduleItem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Schedule/ScheduleList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Schedule/ScheduleList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Schedule/Seats/Seat/Seat.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Schedule/Seats/Seat/Seat.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Schedule/Seats/Seats.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Schedule/Seats/Seats.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Shows/ShowDetails/ShowDetails.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shows/ShowDetails/ShowDetails.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Shows/ShowsList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Shows/ShowsList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Navbar/Navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Navbar/Navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Navbar/Navbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Navbar/Navbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/containers/App/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/App/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actionTypes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actionTypes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/actions/authActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/authActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/actions/reservationActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/reservationActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/actions/theaterActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/actions/theaterActions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/reducers/reservationReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/reservationReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +30,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
   <component name="ProjectId" id="1niOXwVP00tu53GM2mMOFFIJMZm" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
@@ -46,7 +50,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/components/UI/Modal/TicketCartModal" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -58,11 +62,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\src\components\UI\Modal\TicketCartModal" />
       <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\src\assets\images" />
       <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\src\components\UI\Modal\DeleteShowModal" />
       <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\src\components" />
       <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\src\shared" />
-      <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Pavel\Documents\Programming projects\React projects\theater-emt\src\components\UI" />
@@ -108,6 +112,11 @@
       <workItem from="1612484826122" duration="15489000" />
       <workItem from="1612553768156" duration="707000" />
       <workItem from="1612574650504" duration="9061000" />
+      <workItem from="1612585721772" duration="30000" />
+      <workItem from="1612645178369" duration="1387000" />
+      <workItem from="1612660944618" duration="1311000" />
+      <workItem from="1612803389513" duration="4007000" />
+      <workItem from="1612816732539" duration="5035000" />
     </task>
     <servers />
   </component>

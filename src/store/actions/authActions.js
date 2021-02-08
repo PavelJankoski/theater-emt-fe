@@ -13,6 +13,11 @@ export const authCheckState = () => {
                 const userRole = localStorage.getItem('role');
 
                 dispatch(authSuccess(id, token, email, name, surname ,userRole));
+                API_DRIVER.get(`reservations-api/reservations/auth/by-user/${id}`).then(res => {
+                    dispatch({type: actionTypes.RESERVATIONS_FOR_USER, madeReservations: res.data});
+                }).catch(err => {
+                    //
+                });
 
             }
         }
@@ -25,6 +30,12 @@ export const authCheckState = () => {
             const userRole = sessionStorage.getItem('role');
 
             dispatch(authSuccess(id, token, email, name, surname ,userRole));
+            setAuthToken();
+            API_DRIVER.get(`reservations-api/reservations/auth/by-user/${id}`).then(res => {
+                dispatch({type: actionTypes.RESERVATIONS_FOR_USER, madeReservations: res.data});
+            }).catch(err => {
+                //
+            });
 
         }
     }
@@ -51,7 +62,11 @@ export const auth = (email, password, rememberMe) => {
             storage.setItem('role', responseData.roles[0]);
             setAuthToken();
             dispatch(authSuccess(responseData.id, responseData.accessToken, responseData.email, responseData.name, responseData.surname, responseData.roles[0]));
-
+            API_DRIVER.get(`reservations-api/reservations/auth/by-user/${responseData.id}`).then(res => {
+                dispatch({type: actionTypes.RESERVATIONS_FOR_USER, madeReservations: res.data});
+            }).catch(err => {
+                //
+            });
         }).catch(err => {
             dispatch(authFail());
         });

@@ -2,6 +2,8 @@ import React from "react";
 import {Navbar, Nav, NavDropdown} from "react-bootstrap";
 import {Link, NavLink, withRouter} from "react-router-dom";
 import Logo from '../../../assets/images/logo2.jpg';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faTicketAlt} from "@fortawesome/free-solid-svg-icons";
 import './Navbar.css';
 import {connect} from "react-redux";
 import * as actions from "../../../store/actions";
@@ -25,8 +27,8 @@ const navbar = (props) => {
 
 
                         {props.isAuthenticated ? <React.Fragment>
-                            <Nav.Link as={NavLink} to={'/schedule'} className="buyTicketsButton mr-3">Buy tickets</Nav.Link>
-                            <NavDropdown title={props.fullName} id="collasible-nav-dropdown">
+                            <button onClick={props.handleTicketModalShow} className="buyTicketsButton mr-3" style={{backgroundColor: "white", fontSize: "1.2rem"}}><FontAwesomeIcon icon={faTicketAlt}/> ({props.boughtTickets})</button>
+                            <NavDropdown title={props.fullName} id="user-dropdown">
                             <NavDropdown.Item onClick={() => {props.logout()}}>Log out</NavDropdown.Item>
                         </NavDropdown>
                         </React.Fragment> : <React.Fragment>
@@ -46,7 +48,8 @@ const navbar = (props) => {
 const mapStateToProps = state => {
     return {
         isAuthenticated: state.authReducer.token !== null,
-        fullName: state.authReducer.name + " " + state.authReducer.surname
+        fullName: state.authReducer.name + " " + state.authReducer.surname,
+        boughtTickets: state.reservationReducer.madeReservations.length
     };
 };
 

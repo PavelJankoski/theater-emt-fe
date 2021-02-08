@@ -6,7 +6,7 @@ a {
 
     color: rgb(40,68,79);
     text-align: center;
-    border-radius: .25rem;
+    border-radius: .5rem;
     border: rgb(250, 189, 100) solid 1px;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     white-space: nowrap;

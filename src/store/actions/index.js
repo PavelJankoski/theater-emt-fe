@@ -22,7 +22,8 @@ export {
 export {
     fetchReservations,
     makeReservation,
-    resetErrorAndSuccess
+    resetErrorAndSuccess,
+    cancelReservation
 } from './reservationActions';
 
 export {
